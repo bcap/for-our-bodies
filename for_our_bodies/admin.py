@@ -7,6 +7,7 @@ class InlineMeal(admin.StackedInline):
     extra = 0
 
 class EntryAdmin(admin.ModelAdmin):
+    list_display = ('day', 'user', 'weight')
     inlines = [InlineMeal]
 
 admin.site.register(models.User)
