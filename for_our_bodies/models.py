@@ -33,4 +33,4 @@ class MealEntry(BaseModel):
     meal = models.TextField()
 
     class Meta(BaseModel.Meta):
-        verbose_name_plural = 'mealentries'
+        verbose_name_plural = 'meals'
