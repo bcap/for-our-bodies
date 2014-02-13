@@ -5,15 +5,18 @@ class BaseModel(models.Model):
     class Meta:
         abstract = True
 
-    def __unicode__(self):
-        return ', '.join(
-            (': '.join((key, str(value))) for key, value in self.__dict__.iteritems() if not key.startswith('_'))
-        )
+    def __repr__(self):
+        return '<{}: {{{}}}>'.format(self.__class__.__name__, ', '.join(
+            (': '.join((repr(key), repr(value))) for key, value in self.__dict__.iteritems() if not key.startswith('_'))
+        ))
 
 
 class User(BaseModel):
     name = models.CharField(max_length=60)
     sleep_hours = models.IntegerField(default=8)
+
+    def __unicode__(self):
+        return self.name
 
 
 class Entry(BaseModel):
