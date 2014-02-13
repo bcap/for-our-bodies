@@ -1,2 +1,5 @@
+# essential
 Django >= 1.6.2
+
+# development
 pysqlite >= 2.6.3
