@@ -1,12 +1,15 @@
 from django.conf.urls import patterns, include, url
-
 from django.contrib import admin
+from for_our_bodies import views
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'for_our_bodies.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
+
+    url(r'^$', views.index, name='index'),
+    url(r'^users$', views.users, name='users'),
+    url(r'^(?P<userid>\d+)$', views.user_by_id, name='user_by_id'),
+    url(r'^(?P<username>[a-zA-Z]\w+)$', views.user_by_name, name='user_by_name'),
 
     url(r'^admin/', include(admin.site.urls)),
 )
