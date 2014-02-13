@@ -16,7 +16,7 @@ class User(BaseModel):
     sleep_hours = models.IntegerField(default=8)
 
     def __unicode__(self):
-        return self.name
+        return unicode(self.name)
 
 
 class Entry(BaseModel):
@@ -25,6 +25,9 @@ class Entry(BaseModel):
     wakeup = models.DateTimeField()
     sleep = models.DateTimeField()
     weight = models.FloatField()
+
+    def __unicode__(self):
+        return u'{} with {}kg at {}'.format(unicode(self.user), self.weight, self.day)
 
     class Meta(BaseModel.Meta):
         ordering = ['-day']
