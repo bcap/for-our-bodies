@@ -23,8 +23,15 @@ class Entry(BaseModel):
     wakeup = models.DateTimeField()
     sleep = models.DateTimeField()
     weight = models.FloatField()
-    food = models.TextField()
 
     class Meta(BaseModel.Meta):
         ordering = ['-day']
         verbose_name_plural = 'entries'
+
+
+class MealEntry(BaseModel):
+    entry = models.ForeignKey(Entry)
+    meal = models.TextField()
+
+    class Meta(BaseModel.Meta):
+        verbose_name_plural = 'mealentries'
