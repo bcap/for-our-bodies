@@ -18,6 +18,9 @@ class User(BaseModel):
     def __unicode__(self):
         return unicode(self.name)
 
+    def entries(self):
+        return self.entry_set.order_by('day')
+
 
 class Entry(BaseModel):
     user = models.ForeignKey(User)

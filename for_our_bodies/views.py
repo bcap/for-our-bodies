@@ -1,8 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from for_our_bodies.models import User, Entry
+
 def index(request):
-    return HttpResponse("Hello, world. You're at the index.")
+    users = User.objects.all()
+    context = { 'users': users }
+    return render(request, 'index.html', context)
 
 
 def users(request):
